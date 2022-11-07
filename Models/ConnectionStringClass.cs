@@ -11,6 +11,7 @@ namespace PurchaseManagementSystem.Models
         public ConnectionStringClass(DbContextOptions<ConnectionStringClass> options) : base(options)
         {
 
+
         }
         public DbSet<Item> items { get; set; }
         public DbSet<Employee> employees { get; set; }
