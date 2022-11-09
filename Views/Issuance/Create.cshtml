@@ -1,0 +1,44 @@
+﻿@model PurchaseManagementSystem.Models.Issuance
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Issuance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="iss_date" class="control-label"></label>
+                <input asp-for="iss_date" class="form-control" />
+                <span asp-validation-for="iss_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="emp_name" class="control-label"></label>
+                <input asp-for="emp_name" class="form-control" />
+                <span asp-validation-for="emp_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="qnty" class="control-label"></label>
+                <input asp-for="qnty" class="form-control" />
+                <span asp-validation-for="qnty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
