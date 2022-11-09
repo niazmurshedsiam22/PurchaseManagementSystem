@@ -19,5 +19,52 @@ namespace PurchaseManagementSystem.Controllers
             IList<Item> list = connectionStringClass.items.OrderByDescending(z => z.item_id).ToList();
             return View(list);
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Item item)
+        {
+            if (item != null)
+            {
+                connectionStringClass.items.Add(item);
+                connectionStringClass.SaveChanges();
+                return RedirectToAction("Display");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Item item = connectionStringClass.items.Where(x => x.item_id == id).SingleOrDefault();         
+            return View(item);
+        }
+        [HttpPost]
+        public IActionResult Edit(Item item)
+        {
+            Item item1 = connectionStringClass.items.Where(x=>x.item_id == item.item_id).SingleOrDefault();
+            item1.item_name = item.item_name;
+            item1.item_status = item.item_status;
+            connectionStringClass.SaveChanges();
+            return View("Display");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            Item item = connectionStringClass.items.Where(x => x.item_id == id).SingleOrDefault();
+            return View(item);
+        }
+        [HttpPost]
+        public IActionResult Delete(Item item)
+        {
+            Item item1 = connectionStringClass.items.Where(x => x.item_id == item.item_id).SingleOrDefault();
+            connectionStringClass.items.Remove(item1);
+            connectionStringClass.SaveChanges();
+            return View("Display");
+        }
     }
 }
