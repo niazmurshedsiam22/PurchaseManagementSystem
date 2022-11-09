@@ -69,8 +69,10 @@ namespace PurchaseManagementSystem.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            Item item = connectionStringClass.items.Where(x => x.item_id == id).FirstOrDefault();
+            Item item = connectionStringClass.items.Where(x => x.item_id == id).SingleOrDefault();
             return View(item);
         }
+
+
     }
 }
