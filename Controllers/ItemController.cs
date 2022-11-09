@@ -66,5 +66,11 @@ namespace PurchaseManagementSystem.Controllers
             connectionStringClass.SaveChanges();
             return View("Display");
         }
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            Item item = connectionStringClass.items.Where(x => x.item_id == id).FirstOrDefault();
+            return View(item);
+        }
     }
 }
