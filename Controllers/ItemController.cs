@@ -14,7 +14,7 @@ namespace PurchaseManagementSystem.Controllers
         {
             this.connectionStringClass = cs;
         }
-        public IActionResult Display()
+        public IActionResult Index()
         {
             IList<Item> list = connectionStringClass.items.OrderByDescending(z => z.item_id).ToList();
             return View(list);
@@ -31,7 +31,7 @@ namespace PurchaseManagementSystem.Controllers
             {
                 connectionStringClass.items.Add(item);
                 connectionStringClass.SaveChanges();
-                return RedirectToAction("Display");
+                return RedirectToAction("Index");
             }
             return View();
         }
@@ -49,7 +49,7 @@ namespace PurchaseManagementSystem.Controllers
             item1.item_name = item.item_name;
             item1.item_status = item.item_status;
             connectionStringClass.SaveChanges();
-            return View("Display");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -64,7 +64,8 @@ namespace PurchaseManagementSystem.Controllers
             Item item1 = connectionStringClass.items.Where(x => x.item_id == item.item_id).SingleOrDefault();
             connectionStringClass.items.Remove(item1);
             connectionStringClass.SaveChanges();
-            return View("Display");
+            return RedirectToAction("Index");
+            
         }
         [HttpGet]
         public IActionResult Details(int id)
