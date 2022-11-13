@@ -14,7 +14,7 @@ namespace PurchaseManagementSystem.Controllers
         {
             this.connectionStringClass = cc;
         }
-        public IActionResult Display()
+        public IActionResult Index()
         {
             IList<Purchase> purchase = connectionStringClass.purchases.OrderByDescending(x => x.pur_id).ToList();
             return View(purchase);
@@ -31,7 +31,7 @@ namespace PurchaseManagementSystem.Controllers
             {
                 connectionStringClass.purchases.Add(purchase);
                 connectionStringClass.SaveChanges();
-                return RedirectToAction("Display");
+                return RedirectToAction("Index");
             }
 
             return View();
@@ -51,7 +51,7 @@ namespace PurchaseManagementSystem.Controllers
             purchase1.pur_qnty = purchase.pur_qnty;
             purchase1.vendor = purchase.vendor;
             connectionStringClass.SaveChanges();
-            return RedirectToAction("Display");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult Delete(int id)
@@ -65,7 +65,7 @@ namespace PurchaseManagementSystem.Controllers
             Purchase purchase1 = connectionStringClass.purchases.Where(x => x.pur_id == purchase.pur_id).SingleOrDefault();
             connectionStringClass.purchases.Remove(purchase1);
             connectionStringClass.SaveChanges();
-            return RedirectToAction("Display");
+            return RedirectToAction("Index");
         }
         
         [HttpGet]

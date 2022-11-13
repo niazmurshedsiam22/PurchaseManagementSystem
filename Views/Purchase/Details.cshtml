@@ -5,45 +5,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h2>Details</h2>
 
 <div>
     <h4>Purchase</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.pur_item)
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Purchase Item")
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.pur_item)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.pur_qnty)
+        <dt>
+            @Html.DisplayName("Purchase Quantity")
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.pur_qnty)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.pur_date)
+        <dt>
+            @Html.DisplayName("Purchase Date")
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.pur_date)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.pur_price)
+        <dt>
+            @Html.DisplayName("Price")
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.pur_price)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.vendor)
+        <dt>
+            @Html.DisplayName("Vendor Name")
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.vendor)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.pur_id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.pur_id" class="btn btn-success">Edit</a> |
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
 </div>

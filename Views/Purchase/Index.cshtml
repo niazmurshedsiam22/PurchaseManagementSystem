@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<PurchaseManagementSystem.Models.Purchase>
 
 @{
-    ViewData["Title"] = "Display";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Display</h1>
+<h2>Index</h2>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Create New</a>
@@ -14,19 +14,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.pur_item)
+                @Html.DisplayName("Purchase Item")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.pur_qnty)
+                @Html.DisplayName("Purchase Qantity")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.pur_date)
+                @Html.DisplayName("Purchase Date")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.pur_price)
+                @Html.DisplayName("Purchase Price")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.vendor)
+                @Html.DisplayName("Vendor")
             </th>
             <th></th>
         </tr>
@@ -51,7 +51,7 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.pur_id" class="btn btn-success">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.pur_id" class="btn btn-success">Details</a> |
+                <a asp-action="Details" asp-route-id="@item.pur_id" class="btn btn-primary">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.pur_id" class="btn btn-danger">Delete</a>
             </td>
         </tr>
