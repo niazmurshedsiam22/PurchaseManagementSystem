@@ -1,0 +1,37 @@
+﻿@model PurchaseManagementSystem.Models.Issuance
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Issuance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.iss_date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.iss_date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.emp_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.qnty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.qnty)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.iss_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
