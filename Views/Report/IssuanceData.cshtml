@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PurchaseManagementSystem.Models.Issuance>
+
+@{
+    ViewData["Title"] = "IssuanceData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("SearchItemData", "Report", FormMethod.Post))
+{
+    <div class="div">
+        <div class="=col-md-2">
+            @Html.TextBox("Data", null, htmlAttributes: new { @class = "form-control", placeholder = "Enter To Search" })
+
+            <input type="submit" class="btn btn-primary" value="Search" style="margin-top: 10px" />
+        </div>
+    </div>
+}
+<br />
+@Html.ActionLink("View As PDF", "AllItemData", "Report", htmlAttributes: new { @class = "btn btn-primary" })
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Issuance Date")
+            </th>
+            <th>
+                @Html.DisplayName("Employee Name")
+            </th>
+            <th>
+                @Html.DisplayName("Quantity")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.iss_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.emp_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.qnty)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.iss_id" class="btn btn-success">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.iss_id" class="btn btn-primary">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.iss_id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

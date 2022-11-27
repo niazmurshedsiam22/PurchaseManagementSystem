@@ -14,7 +14,7 @@ namespace PurchaseManagementSystem.Controllers
         {
             this.connectionStringClass = cc;
         }
-        public IActionResult Display()
+        public IActionResult Index()
         {
             IList<Issuance> issuance = connectionStringClass.issuances.OrderByDescending(x => x.iss_id).ToList();
             return View(issuance);
@@ -31,7 +31,7 @@ namespace PurchaseManagementSystem.Controllers
             {
                 connectionStringClass.issuances.Add(issuance);
                 connectionStringClass.SaveChanges();
-                return RedirectToAction("Display");
+                return RedirectToAction("Index");
             }
             return View();
         }
@@ -49,7 +49,7 @@ namespace PurchaseManagementSystem.Controllers
             issuance1.emp_name = issuance.emp_name;
             issuance1.qnty = issuance.qnty;
             connectionStringClass.SaveChanges();
-            return RedirectToAction("Display");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult Delete(int id)
@@ -63,7 +63,7 @@ namespace PurchaseManagementSystem.Controllers
             Issuance issuance1 = connectionStringClass.issuances.Where(x => x.iss_id == issuance.iss_id).SingleOrDefault();
             connectionStringClass.issuances.Remove(issuance1);
             connectionStringClass.SaveChanges();
-            return RedirectToAction("Display");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult Details(int id)

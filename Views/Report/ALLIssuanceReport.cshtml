@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PurchaseManagementSystem.Models.Issuance>
+
+@{
+    ViewData["Title"] = "ALLIssuanceReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="margin-top:200px; margin-left:230px">Purchase Management System</h1>
+<h1 style="margin-top:50px; margin-left:230px">Issuance Detail Report</h1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@DateTime.Now;
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Issuance Date")
+            </th>
+            <th>
+                @Html.DisplayName("Employee Name")
+            </th>
+            <th>
+                @Html.DisplayName("Quantity")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.iss_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.emp_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.qnty)
+                </td>
+                @*<td>
+                    <a asp-action="Edit" asp-route-id="@item.iss_id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.iss_id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.iss_id">Delete</a>
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>

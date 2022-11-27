@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PurchaseManagementSystem.Models.Item>
+
+@{
+    ViewData["Title"] = "SearchItemData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Searched Items from Database</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Item Name")
+            </th>
+            <th>
+                @Html.DisplayName("Item Status")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.item_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.item_status)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.ActionLink("View As PDF", "ItemReport", "Report", htmlAttributes: new { @class = "btn btn-primary" })
